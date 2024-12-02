@@ -9,6 +9,7 @@ import Progress from './Progress';
 import Footer from './Footer';
 import Timer from './Timer';
 import NextButton from './NextButton';
+import FinishScreen from './FinishedScreen'
 
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
                 {status==="loading" && <Loading/>}
                 {status==="error" && <Error/>}
                 {status==="ready" && <StartScreen/>}
-                {status==="start" && (
+                {status==="active" && (
                     <>
                     <Progress/>
                     <Question/>
@@ -29,7 +30,8 @@ const App = () => {
                         <NextButton/>
                     </Footer>
                     </>
-                )}                
+                )}     
+                {status === "finished" && <FinishScreen />}           
             </Main>
         </div>
     );
