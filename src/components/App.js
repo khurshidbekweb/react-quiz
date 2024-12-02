@@ -9,7 +9,9 @@ import Question from './Question';
 const initialState = {
     questions: [],
     index: 0,
-    status: 'loading'
+    status: 'loading',
+    answer: null,
+    points: 0
 }
 
 function reducer(state, action){
@@ -30,6 +32,17 @@ function reducer(state, action){
                 ...state,
                 status: "start"
             };
+            case "newAnswer":
+      const question = state.questions.at(state.index);
+
+      return {
+        ...state,
+        answer: action.payload,
+        points:
+          action.payload === question.correctOption
+            ? state.points + question.points
+            : state.points,
+      };
         default: 
             throw new Error("Action unkonwn")
     }
