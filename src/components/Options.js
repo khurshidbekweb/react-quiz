@@ -5,6 +5,7 @@ const Option = ({question}) => {
     const { dispatch, answer } = useQuiz();
 
   const hasAnswered = answer !== null;
+  
     return (
         <div>
             <div className="options">

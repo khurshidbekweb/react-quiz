@@ -101,7 +101,6 @@ function QuizProvider({ children }) {
         secondsRemaining,
         numQuestions,
         maxPossiblePoints,
-
         dispatch,
       }}
     >
