@@ -15,8 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "node server.js",
-    "dev": "concurrently \"npm run server\" \"npm run start\"",
+    "server": "json-server --watch data/questions.json --port 9000",
     "build": "react-scripts build",
     "vercel-build": "npm run build"
   },

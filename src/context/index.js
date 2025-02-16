@@ -82,12 +82,24 @@ function QuizProvider({ children }) {
     0
   );
 
-  useEffect(function () {
-    fetch("http://localhost:9000/questions")
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
+  useEffect(() => {
+    fetch("/questions.json")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Fetched data:", data);
+        dispatch({ type: "dataReceived", payload: data?.questions });
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        dispatch({ type: "dataFailed" });
+      });
   }, []);
+  
 
   return (
     <QuizContext.Provider
