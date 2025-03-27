@@ -98,6 +98,7 @@ function QuizProvider({ children }) {
         dispatch({ type: "dataFailed" });
       });
   }, []);
+  console.log(questions);
   
 
   return (
